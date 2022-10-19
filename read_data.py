@@ -15,25 +15,8 @@ gene_map = {
 
 }
 
-
-
-
-
-
 f = pd.read_csv('./weight_all_16_.csv')
 f = f.to_dict('list')
-
-gene_map = {
-    'A': [1, 0, 0, 0],
-    'C': [0, 1, 0, 0],
-    'G': [0, 0, 1, 0],
-    'T': [0, 0, 0, 1],
-    'N': [0, 0, 0, 0],
-
-}
-
-
-
 
 def split_str(s, length, num):
     str = []
