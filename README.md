@@ -23,6 +23,8 @@ Beforing using please checking the file folder path.
 # Example
 Due to file size limitation, we only uploaded CTCF data on middle frontal area 46 tissue (including 5 type of data: DNA sequence, DNA shape, histone modification, DNase, and conservation score) as an example. Users can build data as the format of the example.
 
+# Train GHTNet
+‘python train.py’ for linux or use pycharm to run the train.py file directly. Hyperparameters can be set in the python file.
 
 # Citation
 If you use GHTNet in your research, please cite the following paper: <br>
