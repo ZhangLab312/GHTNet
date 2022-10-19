@@ -26,8 +26,7 @@ Due to file size limitation, we only uploaded CTCF data on middle frontal area 4
 
 # Citation
 If you use GHTNet in your research, please cite the following paper: <br>
-Yongqing Zhang, Yuhang Liu, Zixuan Wang, Maocheng Wang, Shuwen Xiong, Jiliu Zhou and Quan Zou, <br>
-"GHTNet: a transformer model for uncovering the relationship between tissue-specific TF-DNA binding and chromatin features", <br>
-xxxx,xxxx
+
+"Uncovering the relationship between tissue-specific TF-DNA binding and chromatin features through a Transformer-based model", <br>
 
 
