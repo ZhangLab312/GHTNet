@@ -24,9 +24,9 @@ def split_str(s, length, num):
         str.append(s[i:i+length])
     return str
 def Get_Conservation_Score(TF_name):
-    a = pd.read_table('./data/cs/'+TF_name+"_pos_cs.fasta", sep=' ', header=None)
+    a = pd.read_table('./data/conservation_score/'+TF_name+"_pos_cs.fasta", sep=' ', header=None)
     a.iloc[:,-1] = a.mean(1)
-    b = pd.read_table('./data/cs/' +TF_name+"_neg_1x_cs.fasta", sep=' ', header=None)
+    b = pd.read_table('./data/conservation_score/' +TF_name+"_neg_1x_cs.fasta", sep=' ', header=None)
     train = pd.concat([a,b]).iloc[:,1:-1].fillna(0) #nan 变为0
     X_train = np.array(train,dtype="float32")
     np.random.seed(1)
@@ -72,9 +72,9 @@ def read_seq():
     return label.to_frame()
 
 def read_shape(TF_Name,Shape):
-    with open("./data/se/" + TF_Name + "_pos.data" ,'r') as file:
+    with open("./data/shape/" + TF_Name + "_pos.data" ,'r') as file:
         train_len = len(file.readlines())
-    with open("./data/se/" + TF_Name + "_neg.data" ,'r') as file:
+    with open("./data/shape/" + TF_Name + "_neg.data" ,'r') as file:
         test_len = len(file.readlines())
     num = len(Shape)
     k = 0
