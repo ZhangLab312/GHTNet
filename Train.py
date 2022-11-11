@@ -163,7 +163,9 @@ def run(train_loader, validate_loader, Net, optimizer, loss_function, max_epoch,
         acc = []
         auc_label = []
         auc_score = []
+        num1 = 0
         for valid_samples, valid_labels, cs_vaild, shape_valid, histone_vaild, dnase_vaild in validate_loader:
+            num1 += 1 
             """
                 shape [batch_size, NUM_CLASS] 
             """
@@ -174,6 +176,9 @@ def run(train_loader, validate_loader, Net, optimizer, loss_function, max_epoch,
             """
                 multi-class  评估
             """
+            with torch.no_grad():
+                loss = loss_function(output.to(device), label.type(torch.LongTensor).to(device))
+                running_loss += loss.item()
             for k in range(len(valid_labels)):
                 auc_label.append(valid_labels.cpu().numpy()[k])
                 auc_score.append(valid_output.data.cpu().numpy()[k][1])
@@ -202,7 +207,7 @@ def run(train_loader, validate_loader, Net, optimizer, loss_function, max_epoch,
                 auc_temp = auroc
                 prc_temp = auprc
                 average_score = (3 - auprc - auroc - acc_avg)
-        flag = early_stopping(3 - auprc - auroc - acc_avg, net, Net, './module/' + name, num)
+        flag = early_stopping(running_loss / num1, net, Net, './module/' + name, num)
     file = open('./module.txt', "a")
     file.write(name + " " + str(np.round(auc_temp, 4)) + " " + str(np.round(acc_temp, 4)) + " " + str(
         np.round(prc_temp, 4)) + "\n")
